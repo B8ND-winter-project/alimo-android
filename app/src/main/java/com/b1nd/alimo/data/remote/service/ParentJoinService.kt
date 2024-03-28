@@ -5,7 +5,7 @@ import com.b1nd.alimo.data.remote.response.BaseResponse
 import com.b1nd.alimo.data.remote.response.onbaording.parent.ChildCodeResponse
 import com.b1nd.alimo.data.remote.response.onbaording.parent.MemberNameResponse
 import com.b1nd.alimo.data.remote.response.onbaording.parent.ParentLoginResponse
-import com.b1nd.alimo.di.NoTokenHttpClient
+import com.b1nd.alimo.di.AppHttpClient
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 class ParentJoinService @Inject constructor(
-    @NoTokenHttpClient private val httpClient: HttpClient
+    @AppHttpClient private val httpClient: HttpClient
 ){
     suspend fun singUp(data: ParentJoinRequest): BaseResponse<String?> =
         httpClient.post("/sign-up"){
